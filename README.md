@@ -2,6 +2,8 @@
 
 Get Motion Sensor status via MQTT in Homebridge
 
+Use field_name to parse the field containing your sensor value
+
 Installation
 --------------------
     sudo npm install -g homebridge-mqtt-motionsensor
@@ -26,7 +28,8 @@ Sample HomeBridge Configuration
           "url": "mqtt://localhost",
           "topic": "home/livingroom/motionsensor",
           "username": "username",
-          "password": "password"
+          "password": "password",
+          "field_name": "json_field_name"
         }
       ],
 

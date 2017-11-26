@@ -15,6 +15,7 @@ function MotionSensorAccessory(log, config) {
 	this.url = config['url'];
 	this.topic = config['topic'];
 	this.sn = config['sn'] || 'Unknown';
+	this.field_name = config['field_name'] || 'Unknown';
 
 	this.client_Id 		= 'mqttjs_' + Math.random().toString(16).substr(2, 8);
 
@@ -43,11 +44,11 @@ function MotionSensorAccessory(log, config) {
 	var self = this;
 
 	this.client.subscribe(this.topic);
- 
+
 	this.client.on('message', function (topic, message) {
 		data = JSON.parse(message);
 		if (data === null) return null;
-		self.value = Boolean(parseInt(data,10));
+		self.value = Boolean(parseInt(data[self.field_name,10));
 		self.service.getCharacteristic(Characteristic.MotionDetected).setValue(self.value);
 	});
 
