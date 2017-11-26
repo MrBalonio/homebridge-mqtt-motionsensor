@@ -48,7 +48,7 @@ function MotionSensorAccessory(log, config) {
 	this.client.on('message', function (topic, message) {
 		data = JSON.parse(message);
 		if (data === null) return null;
-        if (self.field_name !== null){
+        if (self.field_name === 'Unknown'){
             self.value = Boolean(parseInt(data[self.field_name],10));
         }else{
             self.value = Boolean(parseInt(data,10));
