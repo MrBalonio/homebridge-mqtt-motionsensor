@@ -48,7 +48,11 @@ function MotionSensorAccessory(log, config) {
 	this.client.on('message', function (topic, message) {
 		data = JSON.parse(message);
 		if (data === null) return null;
-		self.value = Boolean(parseInt(data[self.field_name,10));
+        if (self.field_name !== null){
+            self.value = Boolean(parseInt(data[self.field_name],10));
+        }else{
+            self.value = Boolean(parseInt(data,10));
+        }
 		self.service.getCharacteristic(Characteristic.MotionDetected).setValue(self.value);
 	});
 
