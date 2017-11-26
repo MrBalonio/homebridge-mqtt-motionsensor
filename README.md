@@ -2,7 +2,13 @@
 
 Get Motion Sensor status via MQTT in Homebridge
 
-Use field_name to parse the field containing your sensor value
+Use field_name to parse the field containing your sensor value.
+if field_name is not added to config the plugging will try to parse the
+value. It assumes you ahve a single digit with the values below.
+
+The value of the field must be a 0 or a 1
+0 for false
+1 for true
 
 Installation
 --------------------
